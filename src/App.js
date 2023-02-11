@@ -25,6 +25,10 @@ function App() {
       setCount(data.length)
       console.log(amount)
     }
+    /*
+     * Condition if number of generated items is less than 0 or greater than data.lenght
+     */
+
     setText(data.slice(0, amount))
     /*
      * slice will return a new copy of array where we can define start/end
