@@ -10,7 +10,25 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Hello World!')
+    let amount = parseInt(count)
+    /*
+     * count value is type string. It needs to be parsed to int
+     */
+
+    if (count <= 0) {
+      amount = 1
+      setCount(1)
+    }
+
+    if (count > data.length) {
+      amount = data.length
+      setCount(data.length)
+      console.log(amount)
+    }
+    setText(data.slice(0, amount))
+    /*
+     * slice will return a new copy of array where we can define start/end
+     */
   }
 
   return (
@@ -33,12 +51,9 @@ function App() {
         </button>
       </form>
       <article className='lorem-text'>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, ipsa.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, ipsa.
-        </p>
+        {text.map((item, index) => {
+          return <p key={index}> {item} </p>
+        })}
       </article>
     </section>
   )
